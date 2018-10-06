@@ -6,7 +6,7 @@
 (*   By: prussell <marvin@42.fr>                    +#+  +:+       +#+        *)
 (*                                                +#+#+#+#+#+   +#+           *)
 (*   Created: 2018/10/06 07:30:44 by prussell          #+#    #+#             *)
-(*   Updated: 2018/10/06 13:36:50 by prussell         ###   ########.fr       *)
+(*   Updated: 2018/10/06 13:47:25 by prussell         ###   ########.fr       *)
 (*                                                                            *)
 (* ************************************************************************** *)
 
@@ -23,14 +23,6 @@ let won_state player =
         [ '/'; '-' ; '\\';
           '|'; ' ' ; '|';
           '\\'; '_' ; '/'; 'O']
-
-let user_x () = 
-    print_string "x: ";
-    int_of_string (read_line())
-
-let user_y () = 
-    print_string "y: "; 
-    int_of_string (read_line())
 
 let is_winning_state map =
    match map with 
@@ -73,7 +65,7 @@ let rec loop map player usr_x usr_y =
     else
         begin
         Print.map_instructions map player; 
-        let u_x = user_x () and u_y = user_y () in
+        let u_x = User.x () and u_y = User.y () in
         if player = 'X' then
             loop (update_map map [u_x; u_y] player) 'O' (u_x)(u_y)
         else
