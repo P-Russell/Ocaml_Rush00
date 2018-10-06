@@ -6,22 +6,40 @@
 (*   By: prussell <marvin@42.fr>                    +#+  +:+       +#+        *)
 (*                                                +#+#+#+#+#+   +#+           *)
 (*   Created: 2018/10/06 07:30:44 by prussell          #+#    #+#             *)
-(*   Updated: 2018/10/06 08:54:49 by prussell         ###   ########.fr       *)
+(*   Updated: 2018/10/06 15:21:06 by prussell         ###   ########.fr       *)
 (*                                                                            *)
 (* ************************************************************************** *)
 
-(*
- * let rec loop map =
-     * Print.map_and_instructions
-     * let input = Input.get
-     * if (is_winning_move map input)
-     * loop (update_map(map)) player
-*)
+let update_map map usr_in player = match usr_in with
+    | h::n::t -> List.mapi(fun i x -> if i = (n * 3 + h) then player else x) map
+    | _ -> []
 
-let rec loop map player= 
-    Print.mapAndInstructions map player;
-
+let won_state player =
     if player = 'X' then
-        loop map 'O'
+        [ '\\'; ' ' ; '/';
+          ' '; 'X' ; ' ';
+          '/'; ' ' ; '\\'; 'X']
     else
-        loop map 'X'
+        [ '/'; '-' ; '\\';
+          '|'; ' ' ; '|';
+          '\\'; '_' ; '/'; 'O']
+
+
+let rec loop map player usr_x usr_y =
+    Print.map map
+(*    if (Match.three_by_three_win map) then
+        if player = 'X' then
+            Print.map (won_state 'O')
+        else
+            Print.map (won_state 'X')
+
+    else
+        begin
+        Print.map_instructions map player; 
+        let u_x = User.x () and u_y = User.y () in
+        if player = 'X' then
+            loop (update_map map [u_x; u_y] player) 'O' (u_x)(u_y)
+        else
+            loop (update_map map [u_x; u_y] player) 'X' (u_x)(u_y)
+        end
+*)
