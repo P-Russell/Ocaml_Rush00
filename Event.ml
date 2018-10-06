@@ -6,7 +6,7 @@
 (*   By: prussell <marvin@42.fr>                    +#+  +:+       +#+        *)
 (*                                                +#+#+#+#+#+   +#+           *)
 (*   Created: 2018/10/06 07:30:44 by prussell          #+#    #+#             *)
-(*   Updated: 2018/10/06 12:12:56 by prussell         ###   ########.fr       *)
+(*   Updated: 2018/10/06 12:53:43 by prussell         ###   ########.fr       *)
 (*                                                                            *)
 (* ************************************************************************** *)
 
@@ -31,6 +31,15 @@ let won_state player =
         [ '/'; '-' ; '\\';
           '|'; ' ' ; '|';
           '\\'; '_' ; '/'; 'O']
+
+
+let user_x () = 
+    print_string "x: ";
+    int_of_string (read_line())
+
+let user_y () = 
+    print_string "y: "; 
+    int_of_string (read_line())
 
 let is_winning_state map =
    match map with 
@@ -63,15 +72,11 @@ let is_winning_state map =
        'O' | 'X' ; 'O' | 'X'; 'O' | 'X'; _ ] -> true;
    | _ -> false
 
-let rec loop map player usr_in =
-    Print.map map
-(*
-    let () = print_char player in
-    let () = print_string "'s turn to play" in
-    let () = print_newline in  
+let rec loop map player usr_x usr_y =
+    Print.map map; 
 
+    let u_x = user_x () and u_y = user_y () in
     if player = 'X' then
-        loop map 'O' user_input
+        loop map 'O' (u_x)(u_y)
     else
-        loop map 'X' user_input
-*)
+        loop map 'X' (u_x)(u_y)
