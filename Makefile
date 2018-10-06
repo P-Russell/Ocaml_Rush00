@@ -1,6 +1,18 @@
-SOURCES = Print.ml Main.ml
-RESULT  = test
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: prussell <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2018/10/06 08:38:53 by prussell          #+#    #+#              #
+#    Updated: 2018/10/06 08:39:34 by prussell         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-all: native-code
+SOURCES = Print.ml Event.ml Main.ml
+RESULT  = tictac
+
+all: byte-code
 
 -include OCamlMakefile
