@@ -6,12 +6,12 @@
 (*   By: prussell <marvin@42.fr>                    +#+  +:+       +#+        *)
 (*                                                +#+#+#+#+#+   +#+           *)
 (*   Created: 2018/10/06 07:19:41 by prussell          #+#    #+#             *)
-(*   Updated: 2018/10/06 08:30:51 by prussell         ###   ########.fr       *)
+(*   Updated: 2018/10/06 09:14:04 by prussell         ###   ########.fr       *)
 (*                                                                            *)
 (* ************************************************************************** *)
 
 let rec map = function
-    | [] -> print_char '\n'
+    | [] -> ()
     | h::n1::n2::tl -> print_char h; 
                        print_char ' '; 
                        print_char n1; 
