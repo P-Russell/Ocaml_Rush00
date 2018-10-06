@@ -6,7 +6,7 @@
 (*   By: prussell <marvin@42.fr>                    +#+  +:+       +#+        *)
 (*                                                +#+#+#+#+#+   +#+           *)
 (*   Created: 2018/10/06 07:30:44 by prussell          #+#    #+#             *)
-(*   Updated: 2018/10/06 12:53:43 by prussell         ###   ########.fr       *)
+(*   Updated: 2018/10/06 13:14:09 by prussell         ###   ########.fr       *)
 (*                                                                            *)
 (* ************************************************************************** *)
 
@@ -19,7 +19,7 @@
 *)
 
 let update_map map usr_in player = match usr_in with
-    | h::n::t -> List.mapi(fun i x -> if i = (h + n + 1) then player else x) map
+    | h::n::t -> List.mapi(fun i x -> if i = (h * 3 + n) then player else x) map
     | _ -> []
 
 let won_state player =
@@ -73,10 +73,10 @@ let is_winning_state map =
    | _ -> false
 
 let rec loop map player usr_x usr_y =
-    Print.map map; 
+    Print.map_instructions map player; 
 
     let u_x = user_x () and u_y = user_y () in
     if player = 'X' then
-        loop map 'O' (u_x)(u_y)
+        loop (update_map map [u_x; u_y] player) 'O' (u_x)(u_y)
     else
-        loop map 'X' (u_x)(u_y)
+        loop (update_map map [u_x; u_y] player) 'X' (u_x)(u_y)

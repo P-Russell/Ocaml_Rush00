@@ -6,7 +6,7 @@
 (*   By: prussell <marvin@42.fr>                    +#+  +:+       +#+        *)
 (*                                                +#+#+#+#+#+   +#+           *)
 (*   Created: 2018/10/06 07:19:41 by prussell          #+#    #+#             *)
-(*   Updated: 2018/10/06 12:11:29 by prussell         ###   ########.fr       *)
+(*   Updated: 2018/10/06 12:57:30 by prussell         ###   ########.fr       *)
 (*                                                                            *)
 (* ************************************************************************** *)
 
@@ -29,6 +29,6 @@ let usr_input u_in = match u_in with
     | h::n::t -> print_int h; print_char ' '; print_int n; print_char '\n'
     | _ -> print_endline "Nothing"
 
-let mapAndInstructions m toPlay = 
+let map_instructions m toPlay = 
     map m;
     instructions toPlay
