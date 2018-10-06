@@ -6,7 +6,7 @@
 (*   By: prussell <marvin@42.fr>                    +#+  +:+       +#+        *)
 (*                                                +#+#+#+#+#+   +#+           *)
 (*   Created: 2018/10/06 07:30:44 by prussell          #+#    #+#             *)
-(*   Updated: 2018/10/06 13:47:25 by prussell         ###   ########.fr       *)
+(*   Updated: 2018/10/06 13:51:30 by prussell         ###   ########.fr       *)
 (*                                                                            *)
 (* ************************************************************************** *)
 
@@ -24,39 +24,9 @@ let won_state player =
           '|'; ' ' ; '|';
           '\\'; '_' ; '/'; 'O']
 
-let is_winning_state map =
-   match map with 
-   | [ a; _; _; 
-       b; _; _; 
-       c; _; _; _ ] when a = b && b = c && a <> '-' -> true
-   | [ _; a; _; 
-       _; b; _; 
-       _; c; _; _ ] when a = b && b = c && a <> '-' -> true
-   | [ _; _; a; 
-       _; _; b; 
-       _; _; c; _ ] when a = b && b = c && a <> '-' -> true
-   | [ a; b; c; 
-       _; _; _; 
-       _; _; _; _ ] when a = b && b = c && a <> '-' -> true
-   | [ _; _; _; 
-       a; b; c; 
-       _; _; _; _ ] when a = b && b = c && a <> '-' -> true
-   | [ _; _; _; 
-       _; _; _; 
-       a; b; c; _ ] when a = b && b = c && a <> '-' -> true
-   | [ a; _; _; 
-       _; b; _; 
-       _; _; c; _ ] when a = b && b = c && a <> '-' -> true
-   | [ _; _; a; 
-       _; b; _; 
-       c; _; _; _ ] when a =  b && b = c && a <> '-' -> true
-   | [ 'O' | 'X' ; 'O' | 'X'; 'O' | 'X'; 
-       'O' | 'X' ; 'O' | 'X'; 'O' | 'X'; 
-       'O' | 'X' ; 'O' | 'X'; 'O' | 'X'; _ ] -> true;
-   | _ -> false
 
 let rec loop map player usr_x usr_y =
-    if (is_winning_state map) then
+    if (Match.three_by_three_win map) then
         if player = 'X' then
             Print.map (won_state 'O')
         else
