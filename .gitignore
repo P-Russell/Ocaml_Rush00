@@ -1,0 +1,14 @@
+*.annot
+*.cmo
+*.cma
+*.cmi
+*.a
+*.o
+*.cmx
+*.cmxs
+*.cmxa
+
+.DS_Store
+._DS_Store
+
+tictac
