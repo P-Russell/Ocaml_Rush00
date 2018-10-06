@@ -6,7 +6,7 @@
 (*   By: prussell <marvin@42.fr>                    +#+  +:+       +#+        *)
 (*                                                +#+#+#+#+#+   +#+           *)
 (*   Created: 2018/10/06 07:30:44 by prussell          #+#    #+#             *)
-(*   Updated: 2018/10/06 13:51:30 by prussell         ###   ########.fr       *)
+(*   Updated: 2018/10/06 13:57:02 by prussell         ###   ########.fr       *)
 (*                                                                            *)
 (* ************************************************************************** *)
 
@@ -26,7 +26,8 @@ let won_state player =
 
 
 let rec loop map player usr_x usr_y =
-    if (Match.three_by_three_win map) then
+    Print.map map
+(*    if (Match.three_by_three_win map) then
         if player = 'X' then
             Print.map (won_state 'O')
         else
@@ -41,3 +42,4 @@ let rec loop map player usr_x usr_y =
         else
             loop (update_map map [u_x; u_y] player) 'X' (u_x)(u_y)
         end
+*)
