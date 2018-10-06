@@ -6,7 +6,7 @@
 (*   By: prussell <marvin@42.fr>                    +#+  +:+       +#+        *)
 (*                                                +#+#+#+#+#+   +#+           *)
 (*   Created: 2018/10/06 07:30:44 by prussell          #+#    #+#             *)
-(*   Updated: 2018/10/06 10:05:12 by prussell         ###   ########.fr       *)
+(*   Updated: 2018/10/06 10:12:06 by prussell         ###   ########.fr       *)
 (*                                                                            *)
 (* ************************************************************************** *)
 
@@ -20,6 +20,17 @@
 
 let update_map map inputX inputY player = 
     List.mapi(fun i x -> if i = (inputX + inputY + 2) then player else x) map
+
+let won_state player =
+    if player = 'X' then
+        [ '\'; ' ' ; '/';
+          ' '; 'X' ; ' ';
+          '/'; ' ' ; '\'; 'X']
+    else
+        [ '/'; '-' ; '\';
+          '|'; ' ' ; '|';
+          '\'; '_' ; '/'; 'O']
+
 
 let is_winning_state map =
    match map with 
