@@ -52,4 +52,4 @@ let () =
                '-'; '-'; '-';
                '-'; '-'; '-'; '-']]
     in
-    Event.loop map 'O' 0 0
+    Event.loop map 'O'

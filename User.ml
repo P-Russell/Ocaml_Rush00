@@ -21,3 +21,11 @@ let x () =
 let y () = 
     print_string "y: "; 
     int_of_string (read_line())
+
+let board () = 
+	print_string "board index: ";
+	int_of_string(read_line())
+
+let square () = 
+	print_string "square number: ";
+	int_of_string(read_line())
