@@ -10,7 +10,6 @@
 (*                                                                            *)
 (* ************************************************************************** *)
 
-
 let print_line_first_three  = function
     | [] -> () 
     | v1::v2::v3::tl -> print_char v1;
@@ -31,7 +30,6 @@ let print_line_second_three  = function
                                     print_char '|';
     | _ -> ()
 
-
 let print_line_last_three  = function
     | [] -> () 
     | v1::v2::v3::v4::v5::v6::v7::v8::v9::tl -> print_char v7;
@@ -41,20 +39,12 @@ let print_line_last_three  = function
                         			print_char v9;
                                     		print_char '|';
     | _ -> ()
-(*
-let rec extract_from_three = function
-    | [] -> print_endline "-------------------"
-    | n1::n2::n3::tl -> 
-    			print_line n1; 
-                        print_line n2;
-                        print_line n3;
-                        print_char '\n';
-                        extract_from_three tl;
-    | _ -> () 
-*)
+
 let rec map = function
-    | [] -> ()
-    | h::n1::n2::tl ->   print_line_first_three h;
+    | [] ->  print_endline "------------------";
+    | h::n1::n2::tl ->   
+			 print_endline "------------------";
+			 print_line_first_three h;
     			 print_line_first_three n1;
     			 print_line_first_three n2;
                     	 print_char '\n';
