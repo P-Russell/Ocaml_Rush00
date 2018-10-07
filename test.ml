@@ -6,7 +6,7 @@
 (*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        *)
 (*                                                +#+#+#+#+#+   +#+           *)
 (*   Created: 2018/10/06 09:44:45 by ckatz             #+#    #+#             *)
-(*   Updated: 2018/10/06 18:11:51 by ckatz            ###   ########.fr       *)
+(*   Updated: 2018/10/07 09:47:23 by ckatz            ###   ########.fr       *)
 (*                                                                            *)
 (* ************************************************************************** *)
 
@@ -29,47 +29,51 @@ let check_string str =
     in loop str 0
 
 let validate_input str =
-    let get_x str x_y_list =
+    let x_y_list = [] in
         if ((String.length str) < 3)
         then
-            print_endline "Incorrect format"
+            x_y_list
         else if (String.contains str ' ')
         then
             begin
                 let current_list = String.split_on_char ' ' str in
                 if ((List.length current_list) != 2)
                 then
-                    print_endline "Incorrect format"
+                    x_y_list
                 else
-
-                    let x = (List.nth current_list 1) in
-                    let y = (List.nth current_list 0) in
-                    let x_y_list = (x :: x_y_list) in
-                    let x_y_list = (y :: x_y_list) in
-                    print_endline (List.nth x_y_list 0);
-                    print_endline (List.nth x_y_list 1)
+                    let x_str = (List.nth current_list 1) in
+                    let y_str = (List.nth current_list 0) in
+                    if ((check_string x_str) && (check_string y_str))
+                    then
+                        let x_num = int_of_string (List.nth current_list 1) in
+                        let y_num = int_of_string (List.nth current_list 0) in
+                        let x_y_list = (x_num :: x_y_list) in
+                        let x_y_list = (y_num :: x_y_list) in
+                        x_y_list
+                    else
+                        x_y_list
             end
         else
-            print_endline "Input not valid"
-    in get_x str []
-
+            x_y_list
 
 let main () =
 
-    print_endline (string_of_bool (check_string "23423525"));
+    (*print_endline (string_of_bool (check_string "23423525"));
     print_endline (string_of_bool (check_string "asd8a"));
-    print_endline (string_of_bool (check_string "911"))
-    (*print_endline (print_char (is_number 'a'));
-    print_endline (string_of_bool (is_number '9'))
-    validate_input "9 81";
-    validate_input "asdasfa";
-    validate_input "a 5"*)
+    print_endline (string_of_bool (check_string "911"));
+    print_endline (print_char (is_number 'a'));
+    print_endline (string_of_bool (is_number '9'))*)
+    print_int (List.nth (validate_input "9 81") 0);
+    print_char ' ';
+    print_int (List.nth (validate_input "9 81") 1);
+    print_char '\n';
+    print_int (List.nth (validate_input "5 1") 0);
+    print_char ' ';
+    print_int (List.nth (validate_input "5 1") 1);
+    print_char '\n';
+    print_int (List.nth (validate_input "123 1") 0);
+    print_char ' ';
+    print_int (List.nth (validate_input "123 1") 1);
+    print_char '\n'
 
 let () = main ()
-
-
- (* else if (String.contains str ' ')
-        then
-           (* x = int_of_string ((String.split_on_char ' ' str)[0]);*)
-            print_int x*)
-
