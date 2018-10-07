@@ -10,16 +10,6 @@
 (*                                                                            *)
 (* ************************************************************************** *)
 
-let update_map map usr_in player = match usr_in with
-    | h::n::t -> List.mapi(fun i x -> if i = (n * 3 + h) then player else x) map
-    | _ -> []
-
-let update_small_board board square player = 
-	List.mapi(fun i x -> if i = square then player else x) board
-
-let update map board_num square player =
-	List.mapi(fun i x -> if i = board_num then update_small_board x square player else x) map
-
 let won_state player =
     if player = 'X' then
         [ '\\'; ' ' ; '/';
@@ -29,6 +19,20 @@ let won_state player =
         [ '/'; '-' ; '\\';
           '|'; ' ' ; '|';
           '\\'; '_' ; '/'; 'O']
+
+let update_map map usr_in player = match usr_in with
+    | h::n::t -> List.mapi(fun i x -> if i = (n * 3 + h) then player else x) map
+    | _ -> []
+
+let update_small_board board square player = 
+	let square = (List.mapi(fun i x -> if i = square then player else x) board) in
+		if (Match.three_by_three_won (square)) then
+			won_state player
+		else
+			square
+
+let update map board_num square player =
+	List.mapi(fun i x -> if i = board_num then update_small_board x square player else x) map
 
 
 let rec loop map player =

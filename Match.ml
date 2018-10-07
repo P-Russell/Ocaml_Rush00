@@ -10,7 +10,7 @@
 (*                                                                            *)
 (* ************************************************************************** *)
 
-let three_by_three_win map =
+let three_by_three_won map =
    match map with 
    | [ a; _; _; 
        b; _; _; 
