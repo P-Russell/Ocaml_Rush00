@@ -20,10 +20,6 @@ let won_state player =
           '|'; ' ' ; '|';
           '\\'; '_' ; '/'; 'O']
 
-let update_map map usr_in player = match usr_in with
-    | h::n::t -> List.mapi(fun i x -> if i = (n * 3 + h) then player else x) map
-    | _ -> []
-
 let update_small_board board square player = 
 	let square = (List.mapi(fun i x -> if i = square then player else x) board) in
 		if (Match.three_by_three_won (square)) then
@@ -47,7 +43,8 @@ let rec loop map player =
     else
 	    begin
     	    Print.map_instructions map player;
-	    let board_n = User.board() and square_n = User.square() in
+	    let board_n = User.board map in 
+	    	let square_n = User.square map board_n in
 		    if player = 'X' then
 			    loop(update map (board_n - 1) (square_n - 1) player) 'O'
 		    else
