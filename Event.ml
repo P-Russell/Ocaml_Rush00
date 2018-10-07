@@ -49,7 +49,7 @@ let rec loop map player =
     	    Print.map_instructions map player;
 	    let board_n = User.board() and square_n = User.square() in
 		    if player = 'X' then
-			    loop(update map board_n square_n player) 'O'
+			    loop(update map (board_n - 1) (square_n - 1) player) 'O'
 		    else
-			    loop(update map board_n square_n player) 'X'
+			    loop(update map (board_n - 1) (square_n -1) player ) 'X'
 	    end
