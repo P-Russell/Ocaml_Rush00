@@ -15,7 +15,6 @@ let empty v =
 	else
 		false
 
-
 let check_small_board board num =
 	if (num < 1 || num >= List.length board) then
 		false
@@ -37,7 +36,7 @@ let rec board map =
 	let x = 
 		try
 			int_of_string(read_line())
-		with Failure "int_of_string" ->
+		with _ ->
 			print_endline "Invalid input";
 			board map
 		in
@@ -54,7 +53,7 @@ let rec square map board_n =
 	let x  =
 		try
 			int_of_string(read_line())
-		with Failure "int_of_string" ->
+		with _ ->
 			print_endline "Invalid input";
 			square map board_n
 		in
